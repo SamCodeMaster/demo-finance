@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        Modal Para Agregar Un Rol
+    </div>
+    <div class="card-body">
+        <div class="m-2">
+            <div class="col-12">
+                <label>Nombre rol:</label>
+            </div>
+            <div class="col-12">
+                <input type="text" style="width: 100%;" [(ngModel)]="nombre_rol">
+            </div>
+        </div>
+        <div class="m-2">
+            <div class="col-12">
+                <label>Descripción rol:</label>
+            </div>
+            <div class="col-12">
+                <input type="text" style="width: 100%;" [(ngModel)]="descripcion">
+            </div>
+        </div>
+    </div>
+    <div class="card_footer">
+        <div class="row m-2">
+            <div class="col-3">
+                <button class="btn btn-secondary" (click)="guardarInfromacion()">Guardar</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light" (click)="cerrarModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

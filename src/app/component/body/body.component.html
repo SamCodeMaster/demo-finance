@@ -1,0 +1,57 @@
+<div>
+    <div class="row sup-navbar p-2">
+        <div class="col-10">
+            <h3>Logo</h3>
+        </div>
+        <div class="col-2">
+            <h4>Info del perfil</h4>
+        </div>
+    </div>
+    <div class="row inf-navbar p-2">
+        <div class="col-10">
+            <div>
+                <ng-container *ngIf="views.length == 1">
+                    <input type="text" disabled [value]="views[0]">
+                </ng-container>
+                <ng-container *ngIf="views.length != 1">
+                    <select [(ngModel)]="rolForm">
+                        <option *ngFor="let value of views" [value]=value> {{value}} </option>
+                    </select>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-2" *ngIf="rolForm == 'Comercialización'">
+            <button type="button" class="btn btn-light" (click)="dispararModalComercial()">Agregar registro</button>
+        </div>
+        <div class="col-2" *ngIf="rolForm == 'Rol'">
+            <button type="button" class="btn btn-light" (click)="dispararModalRol()">Agregar registro</button>
+        </div>
+        <div class="col-2" *ngIf="rolForm == 'Empleados'">
+            <button type="button" class="btn btn-light" (click)="dispararModalEmpleado()">Agregar registro</button>
+        </div>
+    </div>
+    <div>
+        <ng-container *ngIf="rolForm == 'Comercialización'">
+            <app-comercializacion
+            [dataGrid]="comercializacionGridData"
+            (aproveEvent)="agregarRegistroReferenciacion($event)"></app-comercializacion>
+        </ng-container>
+        <ng-container *ngIf="rolForm == 'Referenciación'">
+            <app-referenciacion
+            [dataGrid]="refGridData"
+            (aproveEvent)="agregarRegistroCobranza($event)"></app-referenciacion>
+        </ng-container>
+        <ng-container *ngIf="rolForm == 'Cobranza'">
+            <app-cobranza
+            [dataGrid]="cobGridData"></app-cobranza>
+        </ng-container>
+        <ng-container *ngIf="rolForm == 'Rol'">
+            <app-rol
+            [dataGrid]="rolGridData"></app-rol>
+        </ng-container>
+        <ng-container *ngIf="rolForm == 'Empleados'">
+            <app-empleado
+            [dataGrid]="empleadoGridData"></app-empleado>
+        </ng-container>
+    </div>
+</div>

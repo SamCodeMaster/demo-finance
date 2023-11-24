@@ -1,0 +1,151 @@
+<div class="row">
+    <div [ngClass]="{
+        'col-12':!sidebarFlag,
+        'col-8':sidebarFlag
+    }" class="table-wrapper">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre credito</th>
+            <th scope="col">Monto credito</th>
+            <th scope="col">estado</th>
+            <th scope="col">Documentos Requeridos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td></td>
+          </tr>
+          <tr *ngFor="let element of dataGrid; let i = index" (click)="onRowClick(i)">
+            <td>{{element.id}}</td>
+            <td>{{element.comercializacion.credito.nombre_credito}}</td>
+            <td>{{element.comercializacion.monto_credito}}</td>
+            <td>{{element.estado}}</td>
+            <td>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="checkbox" disabled  [checked]="element.documentos.dni != null">
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" disabled [checked]="element.documentos.certificado_laboral != null">
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" disabled [checked]="element.documentos.Extracto_bancario != null">
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" disabled [checked]="element.documentos.pagare != null">
+                    </div>
+                </div>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4 sidebar" *ngIf="sidebarFlag">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Info. Referenciacion
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        Info. Ref. credito
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Id:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.id">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Nombre credito:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled  [(ngModel)]="selectedRow.comercializacion.credito.nombre_credito">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Monto credito:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled  [(ngModel)]="selectedRow.comercializacion.monto_credito">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Estado:</label>
+                                </div>
+                                <div class="col-12">
+                                    <select [(ngModel)]="selectedRow.estado" style="width: 100%;"
+                                    [disabled]="selectedRow.estado == 'Aprobado' ||
+                                                selectedRow.estado == 'Rechazado' ">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Rechazado">Rechazado</option>
+                                        <option value="Aprobado">Aprobado</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Dni (Documento):</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="file" style="width: 100%;"   (change)="fileChange($event, 'dni')">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Certificado laboral (Documento):</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="file" style="width: 100%;"   (change)="fileChange($event, 'certificado_laboral')">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Extraxto bancario (Documento):</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="file" style="width: 100%;"   (change)="fileChange($event, 'extraxto_bancario')">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Pagaré con firma y huella (Documento):</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="file" style="width: 100%;"   (change)="fileChange($event, 'pagare')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_footer">
+                        <div class="row m-2">
+                            <div class="col-3">
+                                <button class="btn btn-secondary" (click)="onSaveInfo()">Guardar</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light" (click)="onCloseRow()">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

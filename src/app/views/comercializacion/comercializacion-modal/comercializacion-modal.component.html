@@ -1,0 +1,99 @@
+<div class="card">
+    <div class="card-header">
+        Modal Para Agregar EntradaComercialización
+    </div>
+    <div class="card-body">
+        <div class="m-2">
+            <div class="col-12">
+                <label>Dni:</label>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <input type="text" style="width: 100%;" [(ngModel)]="dni">
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-light" (click)="buscarCliente()">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="mostrarDatoCLiente">
+            <div class="m-2">
+                <div class="col-12">
+                    <label>Nombre:</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" [disabled]="deshabilitarDatoCLiente" style="width: 100%;" [(ngModel)]="nombre">
+                </div>
+            </div>
+            <div class="m-2">
+                <div class="col-12">
+                    <label>Apellido:</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" [disabled]="deshabilitarDatoCLiente" style="width: 100%;" [(ngModel)]="apellido">
+                </div>
+            </div>
+            <div class="m-2">
+                <div class="col-12">
+                    <label>Telefono:</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" [disabled]="deshabilitarDatoCLiente" style="width: 100%;" [(ngModel)]="telefono">
+                </div>
+            </div>
+            <div class="m-2">
+                <div class="col-12">
+                    <label>Direccion:</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" [disabled]="deshabilitarDatoCLiente" style="width: 100%;" [(ngModel)]="direccion">
+                </div>
+            </div>
+            <div class="m-2">
+                <div class="col-12">
+                    <label>Correo:</label>
+                </div>
+                <div class="col-12">
+                    <input type="text" [disabled]="deshabilitarDatoCLiente" style="width: 100%;" [(ngModel)]="correo">
+                </div>
+            </div>
+        </ng-container>
+        <div class="m-2">
+            <div class="col-12">
+                <label>Monto credito:</label>
+            </div>
+            <div class="col-12">
+                <input type="text" style="width: 100%;" [(ngModel)]="monto_credito">
+            </div>
+        </div>
+        <div class="m-2">
+            <div class="col-12">
+                <label>Numero total cuotas:</label>
+            </div>
+            <div class="col-12">
+                <input type="text" style="width: 100%;" [(ngModel)]="numero_total_cuotas">
+            </div>
+        </div>
+        <div class="m-2">
+            <div class="col-12">
+                <label>Rol:</label>
+            </div>
+            <div class="col-12">
+                <select [(ngModel)]="credito">
+                    <option *ngFor="let element of creditoExistentes; let i = index" [value]="i"> {{element.nombre_credito}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card_footer">
+        <div class="row m-2">
+            <div class="col-3">
+                <button class="btn btn-secondary" (click)="guardarInfromacion()">Guardar</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light" (click)="cerrarModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,152 @@
+<div class="row">
+    <div [ngClass]="{
+        'col-12':!sidebarFlag,
+        'col-8':sidebarFlag
+    }" class="table-wrapper">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Dni</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Télefono</th>
+            <th scope="col">Dirección </th>
+            <th scope="col">Correo</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr *ngFor="let element of dataGrid; let i = index" (click)="onRowClick(i)">
+            <td>{{element.id}}</td>
+            <td>{{element.dni}}</td>
+            <td>{{element.nombre}}</td>
+            <td>{{element.apellido}}</td>
+            <td>{{element.telefono}}</td>
+            <td>{{element.direccion}}</td>
+            <td>{{element.correo}}</td>
+            <td>{{element.login.usuario}}</td>
+            <td>{{element.login.rol.nombre_rol}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4 sidebar" *ngIf="sidebarFlag">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Info. Comercializacion
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        Info. credito
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Id:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.id">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Dni:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.dni">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Nombre:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.nombre">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Apellido:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.apellido">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Telefono:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.telefono">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Dirección:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.direccion">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Correo:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.correo">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Usuario:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.login.usuario">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Rol:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.login.rol.nombre_rol">
+                                </div>
+                            </div>
+                            
+                            
+
+                        </div>
+                    </div>
+                    <div class="card_footer">
+                        <div class="row m-2">
+                            <div class="col-3">
+                                <button class="btn btn-secondary" (click)="onSaveInfo()">Guardar</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light" (click)="onCloseRow()">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

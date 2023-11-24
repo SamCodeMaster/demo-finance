@@ -1,0 +1,143 @@
+<div class="row">
+    <div [ngClass]="{
+        'col-12':!sidebarFlag,
+        'col-8':sidebarFlag
+    }" class="table-wrapper">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre crédito</th>
+            <th scope="col">Monto crédito</th>
+            
+            <th scope="col">Fecha de pago</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Numero cuota</th>
+            <th scope="col">Valor cuota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr *ngFor="let element of dataGrid; let i = index" (click)="onRowClick(i)">
+            <td>{{element.id}}</td>
+            <td>{{element.nombre_credito}}</td>
+            <td>{{element.monto_credito}}</td>
+            <td>{{element.fecha_pago.toString()}}</td>
+            <td>{{element.estado}}</td>
+            <td>{{element.numero_cuota}}</td>
+            <td>{{element.valor}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4 sidebar" *ngIf="sidebarFlag">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Info. Referenciacion
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        Info. Ref. crédito
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Id:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.id">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Nombre crédito:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.nombre_credito">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Monto crédito:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.monto_credito">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Monto crédito:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.monto_credito">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Fecha pago:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.fecha_pago">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Estado:</label>
+                                </div>
+                                <div class="col-12">
+                                    <select [(ngModel)]="selectedRow.estado" style="width: 100%;"
+                                    [disabled]="selectedRow.estado == 'Pagada' ">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Pagada">Pagada</option>
+                                        <option value="Mora">Mora</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Numero cuota:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.numero_cuota">
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                <div class="col-12">
+                                    <label>Valor cuota:</label>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" style="width: 100%;" disabled [(ngModel)]="selectedRow.valor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_footer">
+                        <div class="row m-2">
+                            <div class="col-3">
+                                <button class="btn btn-secondary" (click)="onSaveInfo()">Guardar</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light" (click)="onCloseRow()">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
