@@ -7,6 +7,7 @@ import { RolModalComponent } from 'src/app/views/Rol/rol-modal/rol-modal.compone
 import { Subscription } from 'rxjs';
 import { EmpleadoModalComponent } from 'src/app/views/Empleado/empleado-modal/empleado-modal.component';
 import { ComercializacionModalComponent } from 'src/app/views/comercializacion/comercializacion-modal/comercializacion-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -18,7 +19,8 @@ export class BodyComponent implements OnInit {
   
 
   constructor(private loginService: LoginService,
-    private bsModalService: BsModalService) { }
+    private bsModalService: BsModalService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.onInitialize();
@@ -252,6 +254,10 @@ export class BodyComponent implements OnInit {
         this.comercializacionGridData.push(dato);
       }
     })
+  }
+
+  logOut(){
+    this.router.navigate(['/']);
   }
 
 }
